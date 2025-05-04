@@ -5,10 +5,13 @@ import {
   Burger,
   Button,
   Center,
+  Collapse,
   Divider,
+  Drawer,
   Group,
   HoverCard,
   Image,
+  ScrollArea,
   SimpleGrid,
   Text,
   ThemeIcon,
@@ -166,9 +169,41 @@ export default function MainHeader() {
             </ActionIcon>
           </Group>
 
-          <Burger opened={false} onClick={() => {}} hiddenFrom="sm" />
+          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
         </Group>
       </header>
+
+      <Drawer
+        opened={drawerOpened}
+        onClose={closeDrawer}
+        padding="md"
+        size="100%"
+        title="Navigation"
+        hiddenFrom="sm"
+        zIndex={100000}
+      >
+        <ScrollArea h="calc(100vh - 80px)" mx="-md">
+          <Divider my="sm" />
+          <a href="#" className={classes.link}>
+            Home
+          </a>
+          <UnstyledButton className={classes.link} onClick={toggleLinks}>
+            <Center inline>
+              <Box component="span" mr={5}>
+                Projects
+              </Box>
+              <IconChevronDown size={16} color={theme.colors.blue[6]} />
+            </Center>
+          </UnstyledButton>
+          <Collapse in={linksOpened}>{links}</Collapse>
+          <a href="#" className={classes.link}>
+            About
+          </a>
+          <a href="#" className={classes.link}>
+            Contact
+          </a>
+        </ScrollArea>
+      </Drawer>
     </Box>
   );
 }
