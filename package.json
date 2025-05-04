@@ -2,6 +2,7 @@
   "name": "kocot.dev",
   "private": true,
   "version": "0.0.0",
+  "homepage": "kocot.dev",
   "type": "module",
   "scripts": {
     "dev": "vite",
